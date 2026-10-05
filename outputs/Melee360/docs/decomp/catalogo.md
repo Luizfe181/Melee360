@@ -1,0 +1,27 @@
+# Catálogo por área
+
+Todas as 2419 entradas do inventário estão distribuídas abaixo. Consulte a arquitetura para responsabilidades e limites.
+
+- [libs/doldecomp](catalogo/libs-doldecomp.md)
+- [libs/dolphin](catalogo/libs-dolphin.md)
+- [src/MSL](catalogo/src-MSL.md)
+- [src/MetroTRK](catalogo/src-MetroTRK.md)
+- [src/Runtime](catalogo/src-Runtime.md)
+- [src/melee/cm](catalogo/src-melee-cm.md)
+- [src/melee/db](catalogo/src-melee-db.md)
+- [src/melee/ef](catalogo/src-melee-ef.md)
+- [src/melee/ft](catalogo/src-melee-ft.md)
+- [src/melee/gm](catalogo/src-melee-gm.md)
+- [src/melee/gr](catalogo/src-melee-gr.md)
+- [src/melee/if](catalogo/src-melee-if.md)
+- [src/melee/it](catalogo/src-melee-it.md)
+- [src/melee/lb](catalogo/src-melee-lb.md)
+- [src/melee/mn](catalogo/src-melee-mn.md)
+- [src/melee/mp](catalogo/src-melee-mp.md)
+- [src/melee/pl](catalogo/src-melee-pl.md)
+- [src/melee/sc](catalogo/src-melee-sc.md)
+- [src/melee/sfx](catalogo/src-melee-sfx.md)
+- [src/melee/ty](catalogo/src-melee-ty.md)
+- [src/melee/vi](catalogo/src-melee-vi.md)
+- [src/sysdolphin](catalogo/src-sysdolphin.md)
+- [tools/dat-cli](catalogo/tools-dat-cli.md)

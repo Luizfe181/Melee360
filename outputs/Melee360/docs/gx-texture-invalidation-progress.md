@@ -1,0 +1,9 @@
+# GX texture invalidation — 2026-10-03
+
+Implemented GXInvalidateTexAll without a stub. The native renderer decodes GameCube tiled images into separate D3D textures; invalidation now refreshes every valid bound unit from the CPU image originally loaded by GXLoadTexObj. The loaded descriptor, mipmaps, palette selection and sampler settings remain in force. Changing GXInitTexObjData without loading the object does not redirect an existing binding. TLUT refresh keeps the original image pointer. Diagnostic probes save and restore pointer ownership alongside descriptors and GPU resources.
+
+Validation: Release/Compat XDK build succeeded (existing warnings remain). Xenia TrainingPreview succeeded, including 45 texture GPU cases, 694 TEV cases and 120 successful Present calls. Four new positive/negative occlusion cases cover stale CPU edits before invalidation, fresh edits after invalidation, descriptor mutation without reload and explicit reload to the new image. Logs: `../logs/gx-cache-build.txt`, `../logs/gx-cache-xenia.txt`.
+
+Mario/Link audit: 87 unresolved symbols, zero duplicates; extended HSD audit: 85, zero duplicates. Neither Fighter path links or executes yet. This change supplies real texture coherency; it does not claim full GX services or gameplay. Vertex-cache invalidation, EFB copies, lighting/texgen and the remaining audio/runtime dependencies still need implementation. Full refresh currently redecodes and uploads all bound textures and may be expensive; optimization is deferred. Source image memory must remain valid while bound, as required by the GX caller contract. Hardware performance was not tested in this step.
+
+Published the tested retail XEX to `package/RGH/Melee360/default.xex`; previous image preserved at `work/default-before-gx-cache.xex` in the workspace. Original decomp checkout remains unmodified.

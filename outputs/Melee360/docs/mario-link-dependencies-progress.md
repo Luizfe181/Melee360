@@ -1,0 +1,15 @@
+# Dependências específicas Mario/Link: AXFX e diagnóstico HSD — 2026-10-02
+
+Implementados AXFXReverbStdInit, AXFXReverbStdShutdown, AXFXReverbStdCallback e Settings. Tradução escalar do HandleReverb PowerPC em libs/dolphin/src/dolphin/axfx/reverb_std.c, com os mesmos comprimentos de comb/allpass (1789, 1999, 433, 149), coeficientes powf, taxa de 32 kHz, blocos de 160 amostras e ganhos dry/wet 0.6. O XDK usa a implementação matemática original já integrada. O host usa pow do CRT somente no harness de testes. Não se afirma identidade bit a bit com instruções fundidas Gekko.
+
+Adaptações de segurança/plataforma: canais left/right/surround são processados pelos respectivos ponteiros, sem assumir contiguidade; predelay circula por todos os N elementos (incluindo N=1), ao invés da comparação de ponteiro do assembly com N-1. Inicialização/settings validam parâmetros finitos e fazem alocação transacional; falha preserva o efeito anterior. Shutdown usa os hooks proprietários capturados e pode ser repetido. Registry suporta 16 efeitos. Chamadas precisam ser serializadas pelo futuro mixer; não há serviço AX completo nem reverb aplicado à música atual dos menus.
+
+HSD_ObjDumpStat foi implementado no wrapper src/objalloc.c, que inclui o allocator original sem editar a base. Relata endereço, tamanho, uso, livres e pico dos pools da lista alloc_datas, além do total. Usa o registro real, sem construir classes de render só para diagnóstico. Não reproduz os nomes fixos da tabela original de initialize.c; relata todos os pools atualmente registrados no port. O probe verifica emissão pelo callback de report, preservação de duas alocações vivas e liberação posterior.
+
+Host reverb: primeiro eco de impulso em 1789 amostras, canais independentes, estado contínuo por 30 blocos, predelay de uma amostra com eco em 1790, ganho seco, bypass temporário, parâmetros inválidos, falha na terceira alocação preservando buffers e ownership após troca de hooks. Passou. Xenia executa esses testes com o powf original e allocator HSD. Logs reverb-std-host.txt, reverb-hsd-build.txt, reverb-hsd-xenia-retry.txt. Script reproduzível verify-reverb-std.ps1.
+
+Auditoria Mario/Link passou de 140 para 136 ausências únicas: resolvidos os três exports principais de reverb padrão e HSD_ObjDumpStat. Settings também implementado, mas não era uma das 140 ausências. Zero duplicatas; linker ainda não gera gameplay. Não houve stubs ou /FORCE. Fighter_Create, IA, solver de colisões e combate continuam não executados. Implementação do diagnóstico não significa inicialização completa HSD.
+
+A primeira regressão Xenia terminou após os probes novos e entrada no menu com Cheap-skate exit no log do emulador. Foi repetida para verificar o percurso completo. Esta etapa usa somente Xenia; sem teste em hardware físico.
+
+Resultado final: a repeticao TrainingPreview passou com os novos probes obrigatorios, navegacao Training/CSS/SSS e retorno ao menu principal. A XEX validada foi copiada para o pacote; SHA256 atualizado.

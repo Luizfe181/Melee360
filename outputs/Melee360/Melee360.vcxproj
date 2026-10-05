@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Xbox 360"><Configuration>Debug</Configuration><Platform>Xbox 360</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Xbox 360"><Configuration>Release</Configuration><Platform>Xbox 360</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{71083232-1363-49F7-A936-1674E2609360}</ProjectGuid><RootNamespace>Melee360</RootNamespace><Keyword>Win32Proj</Keyword></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><ConfigurationType>Application</ConfigurationType><CharacterSet>MultiByte</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <DecompMode Condition="'$(DecompMode)'==''">None</DecompMode>
+    <MeleeRoot Condition="'$(MeleeRoot)'==''">$(ProjectDir)..\..\work\melee-base</MeleeRoot>
+    <OutDir>$(ProjectDir)build\$(DecompMode)\</OutDir><IntDir>$(ProjectDir)build\obj\$(DecompMode)\</IntDir>
+    <OutDir Condition="'$(Configuration)'=='Release'">$(ProjectDir)build\Release\$(DecompMode)\</OutDir>
+    <IntDir Condition="'$(Configuration)'=='Release'">$(ProjectDir)build\obj\Release\$(DecompMode)\</IntDir>
+    <TargetName>default</TargetName><OutputFile>$(OutDir)default.exe</OutputFile><LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel><Optimization>Disabled</Optimization><RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>_DEBUG;_XBOX;XBOX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo><BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(MeleeRoot)\src;$(MeleeRoot)\libs\dolphin\include;$(MeleeRoot)\libs\doldecomp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link><OutputFile>$(OutDir)default.exe</OutputFile><AdditionalDependencies>d3d9d.lib;xnetd.lib;xaudiod2.lib;xmcored.lib;xapilibd.lib;xboxkrnl.lib;xbdm.lib;%(AdditionalDependencies)</AdditionalDependencies><GenerateDebugInformation>true</GenerateDebugInformation></Link>
+    <ImageXex><ImageXexOutput>$(OutDir)default.xex</ImageXexOutput></ImageXex>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile><Optimization>MaxSpeed</Optimization><RuntimeLibrary>MultiThreaded</RuntimeLibrary><PreprocessorDefinitions>NDEBUG;_XBOX;XBOX;MELEE360_RETAIL</PreprocessorDefinitions></ClCompile>
+    <Link><GenerateMapFile>true</GenerateMapFile><MapFileName>$(OutDir)default.map</MapFileName><OptimizeReferences>true</OptimizeReferences><EnableCOMDATFolding>true</EnableCOMDATFolding><AdditionalDependencies>d3d9.lib;xnet.lib;xgraphics.lib;xaudio2.lib;xmcore.lib;xapilib.lib;xboxkrnl.lib</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(DecompMode)'=='Compat'">
+    <ClCompile><AdditionalIncludeDirectories>$(ProjectDir)compat;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>MELEE360_DECOMP;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(DecompMode)'=='Compat'"><Link><AdditionalDependencies>$(ProjectDir)build\fighter-create-audit-hsd-main-heap\gameplay.lib;%(AdditionalDependencies)</AdditionalDependencies></Link></ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="src\main.cpp" /><ClCompile Include="src\platform_log.cpp" /></ItemGroup>
+  <ItemGroup Condition="'$(DecompMode)'!='None'"><ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\random.c"><CompileAs>CompileAsC</CompileAs></ClCompile></ItemGroup>
+  <ItemGroup Condition="'$(DecompMode)'=='Compat'">
+    <ClCompile Include="src\mth_decode.cpp" /><ClCompile Include="src\thp_native_decode.cpp" /><ClCompile Include="src\thp_decode_probe.cpp" />
+    <ClCompile Include="src\gx_texture.cpp" />
+    <ClCompile Include="src\gx_native_submit.cpp" />
+    <ClCompile Include="src\gx_copy_codec.cpp" />
+    <ClCompile Include="src\gx_mesh.cpp" />
+    <ClCompile Include="src\card_image.cpp" />
+    <ClCompile Include="src\renderer_probe.cpp" />
+    <ClCompile Include="src\hsd_scene.cpp" />
+    <ClCompile Include="src\hsd_animation.cpp" />
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\fobj.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\spline.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\title_scene.cpp" />
+    <ClCompile Include="src\save_stats.cpp" />
+    <ClCompile Include="src\original_save_crypto.cpp" />
+    <ClCompile Include="src\menu_model.cpp" />
+    <ClCompile Include="src\original_menu_root.cpp" />
+    <ClCompile Include="src\menu_ui.cpp" />
+    <ClCompile Include="src\menu_scheduler.cpp" />
+    <ClCompile Include="src\original_stage_select.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\runtime_archive.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\original_file_load.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <ClCompile Include="src\original_archive_load.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <ClCompile Include="src\original_common_boot.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <ClCompile Include="src\original_runtime_boot.c"><CompileAs>CompileAsC</CompileAs><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <ClCompile Include="src\original_bootstrap.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\lb\lbheap.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="compat\generated\portable_lbmemory.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\original_audio_alloc.c"><CompileAs>CompileAsC</CompileAs><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <ClCompile Include="src\original_archive_init.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="compat\generated\native\devcom.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\runtime_assets_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\original_logic_core.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\native_logic_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\original_training.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\original_character_select.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\gobj_runtime.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\platform_time.cpp" />
+    <ClCompile Include="src\hio_xbox.cpp" /><ClCompile Include="compat\generated\portable_mcc.c"><CompileAs>CompileAsC</CompileAs></ClCompile><ClCompile Include="src\mcc_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile><ClCompile Include="src\fio_xbox.cpp" />
+    <ClCompile Include="src\os_memory_xbox.cpp" /><ClCompile Include="src\os_reset_reason.cpp" /><ClCompile Include="src\os_threads_xbox.cpp" /><ClCompile Include="src\os_reset_xbox.cpp" />
+    <ClCompile Include="src\video_settings.cpp" />
+    <ClCompile Include="src\os_sound.cpp" />
+    <ClCompile Include="src\audio_effects.cpp" />
+    <ClCompile Include="src\audio_xbox.cpp" />
+    <ClCompile Include="src\gx_xbox_state.cpp" />
+    <ClCompile Include="src\xfb_xbox.cpp" />
+    <ClCompile Include="src\hsd_copy_state.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\hsd_video_original.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\hsd_render_original.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\hps_decode.cpp" />
+    <ClCompile Include="src\axfx_delay.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_chorus.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_chorus_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_reverb_hi.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_reverb_hi_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_reverb_std.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\axfx_reverb_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\os_alarm.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\os_cache.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\os_arena.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\vi_xbox.cpp" />
+    <ClCompile Include="src\gx_transform.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\gx_direct.cpp" />
+    <ClCompile Include="src\fps_overlay.cpp" />
+    <ClCompile Include="src\ax_pcm_consumer.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\aram_memory.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\card_filesystem.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\platform_services_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\paired_single_bridge.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\math_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\portable_ax.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\portable_thp_headers.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\thp_header_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\ax_control_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\portable_gx.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\gx_cpu_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\dvd_filesystem.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\dvd_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\calendar.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\os_allocator.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\calendar_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\debug_report.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\platform_math.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\MSL\float.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\libs\dolphin\src\dolphin\pad\Padclamp.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="compat\generated\portable_mtx.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobj.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobjproc.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobjplink.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobjgxlink.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobjobject.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\gobjuserdata.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\intro_video.cpp" />
+    <ClCompile Include="src\intro_stream.cpp" />
+    <ClCompile Include="src\game_rules_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\hsd_support.cpp" />
+    <ClCompile Include="src\hsd_pool_aobj.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_pool_displayfunc.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_pool_mtx.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_pool_robj.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_pool_shadow.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_pool_tev.c"><CompileAs>CompileAsC</CompileAs><FunctionLevelLinking>true</FunctionLevelLinking><PreprocessorDefinitions>LINT;%(PreprocessorDefinitions)</PreprocessorDefinitions><ForcedIncludeFiles>$(ProjectDir)compat\gameplay_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="src\hsd_memory.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\asset_io.cpp" />
+    <ClCompile Include="src\pad_xbox.cpp" />
+    <ClCompile Include="src\pad_hsd.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\controller.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\rumble.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\asset_archive.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\archive.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\class.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\object.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\hash.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\id.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\hsd_probe.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\list.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="src\objalloc.c"><CompileAs>CompileAsC</CompileAs><ForcedIncludeFiles>$(ProjectDir)compat\hsd_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+  </ItemGroup>
+  <ItemGroup Condition="'$(RendererProbe)'=='true'">
+    <ClCompile Include="$(MeleeRoot)\src\sysdolphin\baselib\pobj.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+  </ItemGroup>
+  <ItemGroup Condition="'$(GameProbe)'=='true'">
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmmain.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+  </ItemGroup>
+  <ItemGroup Condition="'$(BootIntroProbe)'=='true'">
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmboot.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmopening.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\lb\lbmthp.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\libs\dolphin\src\dolphin\thp\THPDec.c"><CompileAs>CompileAsC</CompileAs><ForcedIncludeFiles>$(ProjectDir)compat\thp_boundary.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+  </ItemGroup>
+  <ItemGroup Condition="'$(MenuProbe)'=='true'">
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmscmemcard.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmtitle.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\gm\gmtitlemode.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\mn\mnmain.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\lb\lbcardnew.c"><CompileAs>CompileAsC</CompileAs><ForcedIncludeFiles>$(ProjectDir)compat\melee\lb\lbcardnew.h;%(ForcedIncludeFiles)</ForcedIncludeFiles></ClCompile>
+    <ClCompile Include="$(MeleeRoot)\src\melee\lb\lbcardgame.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(MenuProbe)'=='true'">
+    <ClCompile><PreprocessorDefinitions>LINT;DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(BootIntroProbe)'=='true'">
+    <ClCompile><PreprocessorDefinitions>LINT;DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup Condition="'$(LayoutProbe)'=='true'">
+    <ClCompile Include="diagnostics\game_layout.c"><CompileAs>CompileAsC</CompileAs><AdditionalOptions>/FAs /Fa&quot;$(ProjectDir)logs\game-layout.asm&quot; %(AdditionalOptions)</AdditionalOptions></ClCompile>
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(GameProbe)'=='true' or '$(LayoutProbe)'=='true'">
+    <ClCompile><PreprocessorDefinitions>LINT;DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(RendererProbe)'=='true'">
+    <ClCompile><PreprocessorDefinitions>DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <PropertyGroup><TargetName>default</TargetName><TargetPath>$(OutDir)default.exe</TargetPath></PropertyGroup>
+  <!-- Explicit preparation target. Does not change the runnable XEX link. -->
+  <PropertyGroup>
+    <GameplayPowerShell Condition="'$(GameplayPowerShell)'==''">pwsh.exe</GameplayPowerShell>
+    <GameplayPowerShell Condition="'$(GameplayPowerShell)'=='pwsh.exe' and Exists('$(UserProfile)\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe')">$(UserProfile)\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe</GameplayPowerShell>
+  </PropertyGroup>
+  <Target Name="CompileOriginalGameplay">
+    <Exec Command="&quot;$(GameplayPowerShell)&quot; -NoProfile -File &quot;$(ProjectDir)compile-gameplay.ps1&quot;" />
+    <Exec Command="&quot;$(GameplayPowerShell)&quot; -NoProfile -File &quot;$(ProjectDir)collect-gameplay-dependencies.ps1&quot;" />
+  </Target>
+  <Target Name="AuditOriginalGameplayLink">
+    <Exec Command="&quot;$(GameplayPowerShell)&quot; -NoProfile -File &quot;$(ProjectDir)audit-gameplay-link.ps1&quot;" />
+  </Target>
+  <ItemGroup>
+    <ClInclude Include="src\gx_tev_state.inc" />
+    <ClInclude Include="src\gx_tev_probe.inc" />
+    <ClInclude Include="src\gx_vertex_inputs.inc" />
+    <ClInclude Include="src\gx_tev_original_op.inc" />
+    <ClInclude Include="src\gx_tev_original_helpers.inc" />
+    <ClInclude Include="src\gx_direct_VS.h" />
+    <ClInclude Include="src\gx_direct_depth_PS.h" />
+    <None Include="src\gx_tev.hlsl" />
+  </ItemGroup>
+  <Target Name="BuildOriginalRuntimeLibrary" BeforeTargets="Link" Condition="'$(DecompMode)'=='Compat'">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)prepare-original-runtime-library.ps1&quot;" />
+  </Target>
+</Project>
+
+

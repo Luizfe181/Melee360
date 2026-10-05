@@ -1,0 +1,7 @@
+build/
+Debug/
+*.suo
+*.user
+*.sdf
+ipch/
+package/

@@ -1,0 +1,15 @@
+# Integração PCM / AXFX / XAudio2 — 2026-10-02
+
+Criado src/audio_effects.cpp/h: bridge entre PCM HPS e os callbacks Std Reverb, Hi Reverb e Chorus traduzidos. Caminho efetivo: decoder HPS -> PCM16 intercalado -> canais long32 -> Std/Hi/Chorus em blocos de 160 -> PCM16 com clamp -> SubmitSourceBuffer XAudio2. O PCM16 é escalado por 256 ao entrar e convertido de volta por divisão/clamp; não se afirma que essa escala corresponde a todas as convenções do DSP original. Surround recebe zero e não é enviado na saída estéreo.
+
+Integração é diagnóstica, ativada pela presença de audio-effects-preview.flag ao iniciar uma faixa. Sem flag, o caminho normal continua diretamente do decoder para XAudio2. A cadeia sequencial dos três efeitos usa parâmetros privados de teste; não reproduz a seleção de AUX A/B do jogo nem implementa AXAcquireVoice, mixer de vozes, sends ou DSP. Delay já disponível não foi incluído nesta cadeia. Não é um substituto para o engine AX original.
+
+Suporte atual: arquivos mono/stereo a 32000 Hz. Taxas diferentes preservam a reprodução normal e registram a limitação; não há resampler de taxa geral. Sobras menores que 160 frames ficam armazenadas para o próximo bloco HPS. No último bloco, padding zero permite executar os callbacks, mas só os frames válidos são enviados, preservando a duração. Tails dos efeitos após o fim da faixa não são enviados. Troca/parada de faixa destrói a voz antes de liberar buffers/efeitos e reinicializa a cadeia. Cada envio verifica contadores: saída nunca maior que entrada; saldo <160; fim finito exige igualdade. Não muda SamplesPlayed para um relógio estimado.
+
+Probe de integração compara os mesmos 2000 frames estéreo processados de uma vez e partidos em 159/1/321/79/800/640 frames. Resultado idêntico, número exato de frames e PCM diferente da entrada. Inclui blocos menores que a janela, carry e último bloco parcial. O teste reinicializa os efeitos entre variantes e libera tudo. main.cpp exige o probe antes de iniciar áudio.
+
+verify-xenia.ps1 -SoundPreview cria/remove o flag apenas no pacote de teste e exige logs de cadeia habilitada e PCM processado enviado. Não deixa efeitos ativados na build publicada. Build Release/Compat: logs/effects-bridge-build.txt. Compilação corrigiu um nome de constante ausente no XDK usando o sentinel DWORD 0xffffffff para GetFileAttributesA.
+
+Não foram resolvidos novos exports nesta etapa: as 125 ausências da auditoria anterior continuam como referência até nova auditoria. Esta etapa conecta processamento existente à reprodução real; não significa Fighter criado, partida, colisão ECB completa, IA ou itens funcionando. Base original preservada.
+
+Resultado: SoundPreview passou com cadeia ativa e PCM realmente enviado ao XAudio2, opening/castle, parada/fade e retorno ao titulo (effects-bridge-xenia.txt). TrainingPreview passou sem flag: audio normal e percurso Training/CSS/SSS/retorno ao menu (effects-bridge-normal-xenia.txt). Auditoria atualizada confirmou 125 ausencias e zero duplicatas (effects-bridge-audit.txt). XEX validada atualizada no pacote, sem audio-effects-preview.flag; SHA256 renovado. Somente Xenia nesta etapa.

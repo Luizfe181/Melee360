@@ -1,0 +1,3 @@
+#include <stdio.h>
+#include "../src/training_stage.h"
+int main(void){int i,h;float x,y;if(!Melee360TrainingProbe())return 1;Melee360StageInit();if(Melee360StageKind(24)!=31||Melee360StageKind(-1)!=-1)return 2;Melee360StageSetPosition(24,0,0);Melee360StageMove(0,0);Melee360StageCursor(&x,&y,&h);if(h!=24)return 3;for(i=0;i<100;++i)Melee360StageMove(100,100);Melee360StageCursor(&x,&y,&h);if(x!=27||y!=19||h!=-1)return 4;for(i=0;i<100;++i)Melee360StageMove(-100,-100);Melee360StageCursor(&x,&y,&h);if(x!=-27||y!=-19)return 5;puts("Original SSS cursor/hit test/stage mapping and Training rules/player initialization passed");return 0;}

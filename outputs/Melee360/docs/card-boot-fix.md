@@ -1,0 +1,2 @@
+Boot fix: 2026-10-02
+A configuração local do Xenia tinha allow_game_relative_writes=false; o verificador usava true. O probe CARD era fatal quando não podia gravar. Agora testa acesso de escrita antes do probe e continua o boot em diretório somente leitura, sem alegar que a persistência passou. Alarmes e ARAM permanecem inicializados/testados. A configuração local foi habilitada; backup .before-card-fix.bak preservado. Reinicie o Xenia para carregar a configuração. Essa opção é necessária para saves e logs na pasta do jogo.

@@ -1,0 +1,11 @@
+# Índice de matriz GX por vértice — 2026-10-02
+
+GXTexCoord1u8 agora consome o byte FIFO para GX_VA_PNMTXIDX quando habilitado como GX_DIRECT. O uso original relevante está em sysdolphin/baselib/pobj.c:736; apesar do nome da função, ali o byte é um índice de matriz, não uma coordenada UV. O backend valida a sequência antes da posição e aplica a matriz daquele vértice sem modificar GXSetCurrentMtx. IDs 0,3,...,27 correspondem às dez matrizes já carregáveis por GXLoadPosMtxImm.
+
+GXSetVtxDesc e GXClearVtxDesc passam a configurar/limpar PNMTXIDX. GXBegin reinicia o consumo por vértice; a finalização impede reutilizar acidentalmente o byte anterior. GXCallDisplayList inclui o byte inicial no stride e valida a faixa/divisibilidade de todos os índices antes de executar a lista. TransformPositionSlot reutiliza exatamente a transformação e conversão de profundidade anteriores.
+
+Limites explícitos: os oito GX_VA_TEXnMTXIDX continuam não suportados pelo backend. GXTexCoord1u8 não é um FIFO genérico para qualquer formato/atributo; nesta etapa atende somente PNMTXIDX. Descritores incompatíveis provocam assert, não são descartados. Normais, iluminação, TEV e skinning completo ainda dependem de trabalho adicional. Não se afirma que os modelos originais completos agora são desenhados nem que Fighter_Create executa.
+
+Probe XDK executa triângulos com matrizes 0 e 27 alternadas (translação x=1), verifica coordenadas transformadas, repete em display list com padding NOP e confirma que a matriz global anterior continua ativa após desabilitar PNMTXIDX. O probe é obrigatório no script verify-xenia.ps1. Build Release/Compat passou: logs/gx-matrix-index-build.txt. Auditoria Mario/Link: 133 -> 132 símbolos ausentes únicos, zero duplicatas, sem stubs e sem /FORCE; logs/gx-matrix-index-audit.txt. O código original em work/melee-base permaneceu intacto.
+
+TrainingPreview passou no Xenia: novo probe GX, probes anteriores de logica/audio, navegacao Training/CSS/SSS e retorno ao menu. Log: logs/gx-matrix-index-xenia.txt. XEX validada atualizada em package/RGH/Melee360/default.xex e hash atualizado. Battlefield continua somente preparacao diagnostica; sem Fighter criado, combate ou spawn de itens.

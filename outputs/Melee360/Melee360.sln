@@ -1,0 +1,16 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "Melee360", "Melee360.vcxproj", "{71083232-1363-49F7-A936-1674E2609360}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Xbox 360 = Debug|Xbox 360
+        Release|Xbox 360 = Release|Xbox 360
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {71083232-1363-49F7-A936-1674E2609360}.Debug|Xbox 360.ActiveCfg = Debug|Xbox 360
+        {71083232-1363-49F7-A936-1674E2609360}.Debug|Xbox 360.Build.0 = Debug|Xbox 360
+        {71083232-1363-49F7-A936-1674E2609360}.Release|Xbox 360.ActiveCfg = Release|Xbox 360
+        {71083232-1363-49F7-A936-1674E2609360}.Release|Xbox 360.Build.0 = Release|Xbox 360
+    EndGlobalSection
+EndGlobal

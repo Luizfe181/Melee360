@@ -1,0 +1,106 @@
+/* Generated XDK C constant-expression adapter. Source SHA256: CB10B89B8A2036F18EDB91422FD8F1A63291CCC680745A7670E5EFC0FEB632CF */
+#ifndef MELEE_FT_CHARA_FTPIKACHU_FORWARD_H
+#define MELEE_FT_CHARA_FTPIKACHU_FORWARD_H
+
+#include <melee/ft/forward.h>
+#include <melee/ft/kinds/ftCommon/forward.h>
+
+#define ftPk_MF_Special ((MotionFlags) (Ft_MF_SkipModel | Ft_MF_SkipItemVis | Ft_MF_UnkUpdatePhys | Ft_MF_FreezeState))
+
+#define ftPk_MF_SpecialLw ((MotionFlags) (ftPk_MF_Special | Ft_MF_KeepColAnimHitStatus))
+
+#define ftPk_MF_SpecialN ((MotionFlags) (ftPk_MF_Special | Ft_MF_KeepFastFall | Ft_MF_SkipThrowException))
+
+#define ftPk_MF_SpecialHi ((MotionFlags) (ftPk_MF_Special | Ft_MF_KeepFastFall | Ft_MF_KeepGfx | Ft_MF_SkipThrowException))
+
+#define ftPk_MF_SpecialS ((MotionFlags) (ftPk_MF_Special | Ft_MF_KeepGfx | Ft_MF_KeepSfx))
+
+#define ftPk_MF_SpecialAirLw ((MotionFlags) (ftPk_MF_SpecialLw | Ft_MF_SkipParasol))
+
+#define ftPk_MF_SpecialAirN ((MotionFlags) (ftPk_MF_SpecialN | Ft_MF_SkipParasol))
+
+#define ftPk_MF_SpecialAirHi ((MotionFlags) (ftPk_MF_SpecialHi | Ft_MF_SkipParasol))
+
+#define ftPk_MF_SpecialAirS ((MotionFlags) (ftPk_MF_SpecialS | Ft_MF_SkipParasol))
+
+#define ftPk_MF_SpecialN_Coll ((MotionFlags) (ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx))
+
+#define ftPk_MF_SpecialHiStart_Coll ((MotionFlags) (ftCommon_GroundAirColl_MF | Ft_MF_KeepColAnimHitStatus))
+
+#define ftPk_MF_SpecialHiMove_Coll ((MotionFlags) (ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipHit))
+
+#define ftPk_MF_SpecialLw_Coll ((MotionFlags) (ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_KeepColAnimHitStatus))
+
+#define ftPk_MF_SpecialLwHit_Coll ((MotionFlags) (ftPk_MF_SpecialLw_Coll | Ft_MF_SkipHit))
+
+#define ftPk_MF_SpecialLwHitRumble_Coll ((MotionFlags) (ftPk_MF_SpecialLwHit_Coll | Ft_MF_SkipRumble))
+
+typedef enum ftPikachu_MotionState {
+    ftPk_MS_SpecialN = ftCo_MS_Count,
+    ftPk_MS_SpecialAirN,
+    ftPk_MS_SpecialSStart,
+    ftPk_MS_SpecialSHold,
+    ftPk_MS_SpecialS1,
+    ftPk_MS_SpecialSEnd,
+    ftPk_MS_SpecialS0,
+    ftPk_MS_SpecialAirSStart,
+    ftPk_MS_SpecialAirSHold,
+    ftPk_MS_SpecialAirS1,
+    ftPk_MS_SpecialAirSEnd,
+    ftPk_MS_SpecialAirS0,
+    ftPk_MS_SpecialHiStart0,
+    ftPk_MS_SpecialHiStart1,
+    ftPk_MS_SpecialHiEnd,
+    ftPk_MS_SpecialAirHiStart0,
+    ftPk_MS_SpecialAirHiStart1,
+    ftPk_MS_SpecialAirHiEnd,
+    ftPk_MS_SpecialLwStart,
+    ftPk_MS_SpecialLwLoop0,
+    ftPk_MS_SpecialLwLoop1,
+    ftPk_MS_SpecialLwEnd,
+    ftPk_MS_SpecialAirLwStart,
+    ftPk_MS_SpecialAirLwLoop0,
+    ftPk_MS_SpecialAirLwLoop1,
+    ftPk_MS_SpecialAirLwEnd,
+    ftPk_MS_Count,
+    ftPk_MS_SelfCount = ftPk_MS_Count - ftCo_MS_Count,
+} ftPikachu_MotionState;
+
+typedef enum ftPk_Submotion {
+    ftPk_SM_SpecialN = ftCo_SM_Count,
+    ftPk_SM_SpecialAirN,
+    ftPk_SM_SpecialSStart,
+    ftPk_SM_SpecialSHold,
+    ftPk_SM_SpecialS0,
+    ftPk_SM_SpecialS1,
+    ftPk_SM_SpecialSEnd,
+    ftPk_SM_SpecialAirSStart,
+    ftPk_SM_SpecialAirSHold,
+    ftPk_SM_SpecialS,
+    ftPk_SM_SpecialAirSEnd,
+    ftPk_SM_SpecialHiStart0,
+    ftPk_SM_SpecialHiStart1,
+    ftPk_SM_SpecialHiEnd,
+    ftPk_SM_SpecialAirHiStart0,
+    ftPk_SM_SpecialAirHiStart1,
+    ftPk_SM_SpecialAirHiEnd,
+    ftPk_SM_SpecialLwStart,
+    ftPk_SM_SpecialLwLoop0,
+    ftPk_SM_SpecialLwLoop1,
+    ftPk_SM_SpecialLwEnd,
+    ftPk_SM_SpecialAirLwStart,
+    ftPk_SM_SpecialAirLwLoop0,
+    ftPk_SM_SpecialAirLwLoop1,
+    ftPk_SM_SpecialAirLwEnd,
+    ftPk_SM_Count,
+    ftPk_SM_SelfCount = ftPk_SM_Count - ftCo_SM_Count,
+} ftPk_Submotion;
+
+enum ftPk_SpecialN_CmdVars {
+    ftPk_SpecialN_Cmd0,
+    ftPk_SpecialN_Cmd1,
+    ftPk_SpecialN_Cmd2,
+    ftPk_SpecialN_Cmd3,
+};
+
+#endif

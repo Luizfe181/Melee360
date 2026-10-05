@@ -1,0 +1,1031 @@
+{
+  "files": 2419,
+  "lines": 608026,
+  "heuristicFunctions": 23672,
+  "areas": {
+    "libs/doldecomp": {
+      "files": 3,
+      "lines": 392,
+      "bytes": 12233,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "libs/dolphin": {
+      "files": 276,
+      "lines": 63814,
+      "bytes": 1959798,
+      "asmMarkers": 204,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/cm": {
+      "files": 6,
+      "lines": 5208,
+      "bytes": 156643,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/db": {
+      "files": 14,
+      "lines": 2394,
+      "bytes": 76342,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/ef": {
+      "files": 13,
+      "lines": 4517,
+      "bytes": 152984,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/ft": {
+      "files": 917,
+      "lines": 164292,
+      "bytes": 4923690,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/gm": {
+      "files": 167,
+      "lines": 58490,
+      "bytes": 1661612,
+      "asmMarkers": 4,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/gr": {
+      "files": 157,
+      "lines": 60999,
+      "bytes": 1814270,
+      "asmMarkers": 5,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/if": {
+      "files": 38,
+      "lines": 10195,
+      "bytes": 327139,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/it": {
+      "files": 378,
+      "lines": 85290,
+      "bytes": 2439745,
+      "asmMarkers": 1,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/lb": {
+      "files": 68,
+      "lines": 19613,
+      "bytes": 589182,
+      "asmMarkers": 1,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/mn": {
+      "files": 54,
+      "lines": 34130,
+      "bytes": 1152430,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/mp": {
+      "files": 8,
+      "lines": 12986,
+      "bytes": 441570,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/pl": {
+      "files": 18,
+      "lines": 7158,
+      "bytes": 201825,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/sc": {
+      "files": 2,
+      "lines": 55,
+      "bytes": 1498,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/sfx": {
+      "files": 4,
+      "lines": 529,
+      "bytes": 12897,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/ty": {
+      "files": 11,
+      "lines": 12489,
+      "bytes": 376626,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/melee/vi": {
+      "files": 26,
+      "lines": 2605,
+      "bytes": 76701,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/MetroTRK": {
+      "files": 54,
+      "lines": 5083,
+      "bytes": 130786,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/MSL": {
+      "files": 45,
+      "lines": 3720,
+      "bytes": 92971,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    },
+    "src/Runtime": {
+      "files": 14,
+      "lines": 1289,
+      "bytes": 28540,
+      "asmMarkers": 2,
+      "nonmatchingMarkers": 0
+    },
+    "src/sysdolphin": {
+      "files": 145,
+      "lines": 52765,
+      "bytes": 1619564,
+      "asmMarkers": 69,
+      "nonmatchingMarkers": 0
+    },
+    "tools/dat-cli": {
+      "files": 1,
+      "lines": 13,
+      "bytes": 488,
+      "asmMarkers": 0,
+      "nonmatchingMarkers": 0
+    }
+  },
+  "includeEdges": [
+    {
+      "from": "ft",
+      "to": "ft",
+      "count": 3617
+    },
+    {
+      "from": "it",
+      "to": "it",
+      "count": 1518
+    },
+    {
+      "from": "ft",
+      "to": "it",
+      "count": 283
+    },
+    {
+      "from": "gm",
+      "to": "lb",
+      "count": 246
+    },
+    {
+      "from": "ft",
+      "to": "lb",
+      "count": 244
+    },
+    {
+      "from": "it",
+      "to": "ft",
+      "count": 187
+    },
+    {
+      "from": "gr",
+      "to": "lb",
+      "count": 178
+    },
+    {
+      "from": "it",
+      "to": "lb",
+      "count": 129
+    },
+    {
+      "from": "ft",
+      "to": "pl",
+      "count": 117
+    },
+    {
+      "from": "ft",
+      "to": "ef",
+      "count": 113
+    },
+    {
+      "from": "mn",
+      "to": "lb",
+      "count": 99
+    },
+    {
+      "from": "gm",
+      "to": "mn",
+      "count": 87
+    },
+    {
+      "from": "gr",
+      "to": "gr",
+      "count": 83
+    },
+    {
+      "from": "it",
+      "to": "ef",
+      "count": 83
+    },
+    {
+      "from": "gr",
+      "to": "it",
+      "count": 76
+    },
+    {
+      "from": "gm",
+      "to": "gm",
+      "count": 74
+    },
+    {
+      "from": "mn",
+      "to": "gm",
+      "count": 63
+    },
+    {
+      "from": "vi",
+      "to": "lb",
+      "count": 55
+    },
+    {
+      "from": "ft",
+      "to": "mp",
+      "count": 49
+    },
+    {
+      "from": "it",
+      "to": "db",
+      "count": 47
+    },
+    {
+      "from": "gr",
+      "to": "ft",
+      "count": 45
+    },
+    {
+      "from": "gr",
+      "to": "mp",
+      "count": 44
+    },
+    {
+      "from": "if",
+      "to": "lb",
+      "count": 43
+    },
+    {
+      "from": "gm",
+      "to": "if",
+      "count": 41
+    },
+    {
+      "from": "gm",
+      "to": "pl",
+      "count": 40
+    },
+    {
+      "from": "it",
+      "to": "mp",
+      "count": 40
+    },
+    {
+      "from": "gr",
+      "to": "cm",
+      "count": 37
+    },
+    {
+      "from": "it",
+      "to": "gr",
+      "count": 37
+    },
+    {
+      "from": "gm",
+      "to": "gr",
+      "count": 32
+    },
+    {
+      "from": "ft",
+      "to": "gr",
+      "count": 29
+    },
+    {
+      "from": "gm",
+      "to": "sc",
+      "count": 28
+    },
+    {
+      "from": "gm",
+      "to": "ft",
+      "count": 27
+    },
+    {
+      "from": "ft",
+      "to": "cm",
+      "count": 26
+    },
+    {
+      "from": "if",
+      "to": "gm",
+      "count": 26
+    },
+    {
+      "from": "vi",
+      "to": "gr",
+      "count": 25
+    },
+    {
+      "from": "gr",
+      "to": "gm",
+      "count": 24
+    },
+    {
+      "from": "pl",
+      "to": "ft",
+      "count": 24
+    },
+    {
+      "from": "mn",
+      "to": "sc",
+      "count": 23
+    },
+    {
+      "from": "ty",
+      "to": "lb",
+      "count": 23
+    },
+    {
+      "from": "vi",
+      "to": "ef",
+      "count": 23
+    },
+    {
+      "from": "gm",
+      "to": "ty",
+      "count": 22
+    },
+    {
+      "from": "it",
+      "to": "cm",
+      "count": 22
+    },
+    {
+      "from": "vi",
+      "to": "gm",
+      "count": 21
+    },
+    {
+      "from": "gm",
+      "to": "vi",
+      "count": 18
+    },
+    {
+      "from": "it",
+      "to": "gm",
+      "count": 16
+    },
+    {
+      "from": "ft",
+      "to": "gm",
+      "count": 15
+    },
+    {
+      "from": "if",
+      "to": "sc",
+      "count": 15
+    },
+    {
+      "from": "if",
+      "to": "if",
+      "count": 15
+    },
+    {
+      "from": "lb",
+      "to": "lb",
+      "count": 15
+    },
+    {
+      "from": "lb",
+      "to": "ft",
+      "count": 15
+    },
+    {
+      "from": "mn",
+      "to": "mn",
+      "count": 15
+    },
+    {
+      "from": "db",
+      "to": "if",
+      "count": 14
+    },
+    {
+      "from": "gm",
+      "to": "ef",
+      "count": 14
+    },
+    {
+      "from": "gm",
+      "to": "cm",
+      "count": 13
+    },
+    {
+      "from": "lb",
+      "to": "gm",
+      "count": 13
+    },
+    {
+      "from": "vi",
+      "to": "ft",
+      "count": 13
+    },
+    {
+      "from": "vi",
+      "to": "sc",
+      "count": 12
+    },
+    {
+      "from": "gm",
+      "to": "it",
+      "count": 11
+    },
+    {
+      "from": "db",
+      "to": "ft",
+      "count": 10
+    },
+    {
+      "from": "gm",
+      "to": "db",
+      "count": 10
+    },
+    {
+      "from": "vi",
+      "to": "pl",
+      "count": 10
+    },
+    {
+      "from": "cm",
+      "to": "gr",
+      "count": 9
+    },
+    {
+      "from": "gr",
+      "to": "if",
+      "count": 9
+    },
+    {
+      "from": "ty",
+      "to": "gm",
+      "count": 9
+    },
+    {
+      "from": "vi",
+      "to": "it",
+      "count": 9
+    },
+    {
+      "from": "db",
+      "to": "it",
+      "count": 8
+    },
+    {
+      "from": "gr",
+      "to": "ef",
+      "count": 8
+    },
+    {
+      "from": "if",
+      "to": "mn",
+      "count": 8
+    },
+    {
+      "from": "mp",
+      "to": "lb",
+      "count": 8
+    },
+    {
+      "from": "ty",
+      "to": "mn",
+      "count": 8
+    },
+    {
+      "from": "gr",
+      "to": "sc",
+      "count": 7
+    },
+    {
+      "from": "pl",
+      "to": "gm",
+      "count": 7
+    },
+    {
+      "from": "pl",
+      "to": "pl",
+      "count": 7
+    },
+    {
+      "from": "ty",
+      "to": "if",
+      "count": 7
+    },
+    {
+      "from": "cm",
+      "to": "lb",
+      "count": 6
+    },
+    {
+      "from": "if",
+      "to": "pl",
+      "count": 6
+    },
+    {
+      "from": "it",
+      "to": "pl",
+      "count": 6
+    },
+    {
+      "from": "lb",
+      "to": "gr",
+      "count": 6
+    },
+    {
+      "from": "mp",
+      "to": "ft",
+      "count": 6
+    },
+    {
+      "from": "db",
+      "to": "gm",
+      "count": 5
+    },
+    {
+      "from": "db",
+      "to": "pl",
+      "count": 5
+    },
+    {
+      "from": "db",
+      "to": "lb",
+      "count": 5
+    },
+    {
+      "from": "ef",
+      "to": "lb",
+      "count": 5
+    },
+    {
+      "from": "ft",
+      "to": "sfx",
+      "count": 5
+    },
+    {
+      "from": "gm",
+      "to": "mp",
+      "count": 5
+    },
+    {
+      "from": "gr",
+      "to": "pl",
+      "count": 5
+    },
+    {
+      "from": "gr",
+      "to": "ty",
+      "count": 5
+    },
+    {
+      "from": "lb",
+      "to": "sc",
+      "count": 5
+    },
+    {
+      "from": "mp",
+      "to": "gr",
+      "count": 5
+    },
+    {
+      "from": "mp",
+      "to": "mp",
+      "count": 5
+    },
+    {
+      "from": "pl",
+      "to": "it",
+      "count": 5
+    },
+    {
+      "from": "ef",
+      "to": "ft",
+      "count": 4
+    },
+    {
+      "from": "ft",
+      "to": "db",
+      "count": 4
+    },
+    {
+      "from": "if",
+      "to": "cm",
+      "count": 4
+    },
+    {
+      "from": "mn",
+      "to": "it",
+      "count": 4
+    },
+    {
+      "from": "mp",
+      "to": "it",
+      "count": 4
+    },
+    {
+      "from": "sfx",
+      "to": "mp",
+      "count": 4
+    },
+    {
+      "from": "ty",
+      "to": "sc",
+      "count": 4
+    },
+    {
+      "from": "ef",
+      "to": "ef",
+      "count": 3
+    },
+    {
+      "from": "if",
+      "to": "gr",
+      "count": 3
+    },
+    {
+      "from": "lb",
+      "to": "it",
+      "count": 3
+    },
+    {
+      "from": "pl",
+      "to": "if",
+      "count": 3
+    },
+    {
+      "from": "ty",
+      "to": "ty",
+      "count": 3
+    },
+    {
+      "from": "vi",
+      "to": "cm",
+      "count": 3
+    },
+    {
+      "from": "vi",
+      "to": "mn",
+      "count": 3
+    },
+    {
+      "from": "vi",
+      "to": "ty",
+      "count": 3
+    },
+    {
+      "from": "cm",
+      "to": "ft",
+      "count": 2
+    },
+    {
+      "from": "cm",
+      "to": "cm",
+      "count": 2
+    },
+    {
+      "from": "db",
+      "to": "ef",
+      "count": 2
+    },
+    {
+      "from": "if",
+      "to": "db",
+      "count": 2
+    },
+    {
+      "from": "if",
+      "to": "ty",
+      "count": 2
+    },
+    {
+      "from": "if",
+      "to": "ft",
+      "count": 2
+    },
+    {
+      "from": "it",
+      "to": "ty",
+      "count": 2
+    },
+    {
+      "from": "lb",
+      "to": "cm",
+      "count": 2
+    },
+    {
+      "from": "lb",
+      "to": "pl",
+      "count": 2
+    },
+    {
+      "from": "mn",
+      "to": "ft",
+      "count": 2
+    },
+    {
+      "from": "mn",
+      "to": "ty",
+      "count": 2
+    },
+    {
+      "from": "mn",
+      "to": "db",
+      "count": 2
+    },
+    {
+      "from": "mp",
+      "to": "db",
+      "count": 2
+    },
+    {
+      "from": "mp",
+      "to": "cm",
+      "count": 2
+    },
+    {
+      "from": "sfx",
+      "to": "ft",
+      "count": 2
+    },
+    {
+      "from": "sfx",
+      "to": "pl",
+      "count": 2
+    },
+    {
+      "from": "ty",
+      "to": "db",
+      "count": 2
+    },
+    {
+      "from": "cm",
+      "to": "gm",
+      "count": 1
+    },
+    {
+      "from": "cm",
+      "to": "mp",
+      "count": 1
+    },
+    {
+      "from": "cm",
+      "to": "pl",
+      "count": 1
+    },
+    {
+      "from": "db",
+      "to": "cm",
+      "count": 1
+    },
+    {
+      "from": "db",
+      "to": "gr",
+      "count": 1
+    },
+    {
+      "from": "ef",
+      "to": "cm",
+      "count": 1
+    },
+    {
+      "from": "ef",
+      "to": "sc",
+      "count": 1
+    },
+    {
+      "from": "ft",
+      "to": "if",
+      "count": 1
+    },
+    {
+      "from": "ft",
+      "to": "mn",
+      "count": 1
+    },
+    {
+      "from": "ft",
+      "to": "sc",
+      "count": 1
+    },
+    {
+      "from": "gm",
+      "to": "sfx",
+      "count": 1
+    },
+    {
+      "from": "if",
+      "to": "ef",
+      "count": 1
+    },
+    {
+      "from": "lb",
+      "to": "mp",
+      "count": 1
+    },
+    {
+      "from": "lb",
+      "to": "if",
+      "count": 1
+    },
+    {
+      "from": "lb",
+      "to": "db",
+      "count": 1
+    },
+    {
+      "from": "lb",
+      "to": "ef",
+      "count": 1
+    },
+    {
+      "from": "mn",
+      "to": "if",
+      "count": 1
+    },
+    {
+      "from": "pl",
+      "to": "lb",
+      "count": 1
+    },
+    {
+      "from": "pl",
+      "to": "cm",
+      "count": 1
+    },
+    {
+      "from": "pl",
+      "to": "gr",
+      "count": 1
+    },
+    {
+      "from": "sc",
+      "to": "sc",
+      "count": 1
+    },
+    {
+      "from": "sfx",
+      "to": "lb",
+      "count": 1
+    },
+    {
+      "from": "vi",
+      "to": "vi",
+      "count": 1
+    }
+  ],
+  "blockers": {
+    "OS/stack": [
+      "_stack_addr",
+      "_stack_end",
+      "OSCheckActiveThreads",
+      "OSGetResetCode",
+      "OSResetSystem"
+    ],
+    "AI/AX": [
+      "AIInit",
+      "AISetDSPSampleRate",
+      "AISetStreamVolLeft",
+      "AISetStreamVolRight",
+      "AXAcquireVoice",
+      "AXFreeVoice",
+      "AXInit",
+      "AXRegisterAuxACallback",
+      "AXRegisterAuxBCallback",
+      "AXRegisterCallback",
+      "AXSetVoiceAddr",
+      "AXSetVoiceAdpcm",
+      "AXSetVoiceAdpcmLoop",
+      "AXSetVoiceCurrentAddr",
+      "AXSetVoiceEndAddr",
+      "AXSetVoiceItdOn",
+      "AXSetVoiceItdTarget",
+      "AXSetVoiceLoop",
+      "AXSetVoiceLoopAddr",
+      "AXSetVoiceMix",
+      "AXSetVoicePriority",
+      "AXSetVoiceSrc",
+      "AXSetVoiceSrcRatio",
+      "AXSetVoiceState",
+      "AXSetVoiceVe",
+      "AXSetVoiceVeDelta"
+    ],
+    "GX": [
+      "GXCopyDisp",
+      "GXCopyTex",
+      "GXEnableTexOffsets",
+      "GXInvalidateTexAll",
+      "GXInvalidateVtxCache",
+      "GXLoadLightObjImm",
+      "GXLoadTexObj",
+      "GXLoadTlut",
+      "GXNormal3f32",
+      "GXSetChanAmbColor",
+      "GXSetChanCtrl",
+      "GXSetChanMatColor",
+      "GXSetCopyClamp",
+      "GXSetCopyClear",
+      "GXSetCopyFilter",
+      "GXSetDispCopyDst",
+      "GXSetDispCopyGamma",
+      "GXSetDispCopySrc",
+      "GXSetDispCopyYScale",
+      "GXSetDither",
+      "GXSetDstAlpha",
+      "GXSetFog",
+      "GXSetFogRangeAdj",
+      "GXSetIndTexCoordScale",
+      "GXSetIndTexMtx",
+      "GXSetIndTexOrder",
+      "GXSetLineWidth",
+      "GXSetNumChans",
+      "GXSetNumIndStages",
+      "GXSetNumTevStages",
+      "GXSetNumTexGens",
+      "GXSetPointSize",
+      "GXSetTevAlphaIn",
+      "GXSetTevAlphaOp",
+      "GXSetTevClampMode",
+      "GXSetTevColor",
+      "GXSetTevColorIn",
+      "GXSetTevColorOp",
+      "GXSetTevColorS10",
+      "GXSetTevDirect",
+      "GXSetTevIndirect",
+      "GXSetTevKAlphaSel",
+      "GXSetTevKColor",
+      "GXSetTevKColorSel",
+      "GXSetTevOp",
+      "GXSetTevOrder",
+      "GXSetTevSwapMode",
+      "GXSetTevSwapModeTable",
+      "GXSetTexCoordGen2",
+      "GXSetTexCopyDst",
+      "GXSetTexCopySrc",
+      "GXSetZCompLoc",
+      "GXSetZTexture"
+    ],
+    "HSD": [
+      "HSD_CreateMainHeap",
+      "HSD_GetCurrentRenderPass",
+      "HSD_GetNextArena",
+      "HSD_Init_803755A8",
+      "HSD_StartRender"
+    ],
+    "MCC": [
+      "MCCClose",
+      "MCCEnumDevices",
+      "MCCExit",
+      "MCCGetConnectionStatus",
+      "MCCGetFreeBlocks",
+      "MCCGetLastError",
+      "MCCInit",
+      "MCCNotify",
+      "MCCOpen",
+      "MCCRead",
+      "MCCStreamOpen",
+      "MCCWrite"
+    ],
+    "THP": [
+      "THPDec_8032F8D4",
+      "THPDec_8032FD40",
+      "THPDec_80331340",
+      "THPDec_803313D0",
+      "THPInit",
+      "THPVideoDecode"
+    ],
+    "VI": [
+      "VIConfigure",
+      "VIFlush",
+      "VIGetNextField",
+      "VISetBlack",
+      "VISetNextFrameBuffer",
+      "VIWaitForRetrace"
+    ]
+  },
+  "compiledInventory": 987,
+  "compiled": 986
+}
