@@ -4,6 +4,8 @@
 !/.gitattributes
 !/README_BACKUP.md
 !/README.md
+!/CONTRIBUTING.md
+!/.github/
 !/outputs/
 /outputs/*
 !/outputs/Melee360/

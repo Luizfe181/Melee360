@@ -117,6 +117,11 @@ Os documentos conservam estados históricos. Relatórios antigos de “Fighter a
 
 Preparação dos vértices, iluminação e texgen; submissão e lifetime de buffers; coerência de texturas/cópias RAM–GPU; fidelidade GX/TEV; modos de áudio pendentes; integração dos modos de jogo; regressões longas e validação no hardware real.
 
+## Como contribuir
+
+Quer ajudar? Leia o [guia de contribuição](CONTRIBUTING.md). Ele lista tarefas concretas de GX, texgen, áudio, build e testes, com arquivos de entrada e critérios de aceitação. Não é necessário trabalhar em tudo nem ter XDK para ajudar com documentação, análise e casos de teste.
+
+Abra uma [issue](https://github.com/Luizfe181/Melee360/issues/new/choose) antes de uma mudança grande ou envie um PR pequeno com o problema, testes e limites. Há modelos para bugs, propostas e PRs. Assets do jogo, SDK e pacote RGH não devem ser enviados.
 ## Créditos e licenças
 
 Base de decompilação: **doldecomp/melee**. O projeto utiliza código e referências de terceiros com avisos em `third_party`, incluindo Independent JPEG Group e componentes/referências Dolphin. Consulte os avisos de cada componente e a licença da base original; este README não atribui uma licença única nova a todo o conteúdo.
