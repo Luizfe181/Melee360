@@ -3,6 +3,7 @@
 !/.gitignore
 !/.gitattributes
 !/README_BACKUP.md
+!/README.md
 !/outputs/
 /outputs/*
 !/outputs/Melee360/

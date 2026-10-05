@@ -24,4 +24,4 @@ Os relatórios históricos preservam limites de cada revisão; links absolutos a
 
 Consultar alterações com git status. Para novos snapshots, revisar git diff e git diff --cached antes de git commit. A .gitignore exclui recursos do jogo e artefatos pesados, mas arquivos novos devem continuar sendo revisados.
 
-Nenhum remoto configurado ou upload realizado. O commit local permite voltar ao código; uma cópia externa/remoto é necessária para manter esse backup fora deste disco.
+Backup enviado à branch main de https://github.com/Luizfe181/Melee360. Novos commits locais precisam de git push para atualizar a cópia remota. Consulte README.md para apresentação e preparação do projeto.
